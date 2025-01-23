@@ -1,0 +1,8 @@
+**/accads_crawler
+**/Ad-BlockerResearch
+**/*.json
+**/*.csv
+**/*.txt
+**/targeted-and-troublesome-crawler
+**/topics_classifier
+**/*.png

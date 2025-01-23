@@ -1,0 +1,185 @@
+<View>
+  <!-- Image to annotate -->
+  <Image name="image" value="$image"/>
+
+  <!-- Label for the TextArea -->
+  <Header value="Select the appropriate categories:" />
+
+  <!-- Categories with nested Taxonomy -->
+  <Choices name="Regulations" toName="image">
+    <Choice value="Regulations (Age-Based: sexually suggestive, Cannabinoids, alcohol, gambling/sweepstakes, cosmetic interventions, hazardous goods, drug use, graphic violence, intense language, Weight-reduction regimes or establishments, Lottery, E-Cigarettes, Prescription-only medicines)"/>
+  </Choices>
+  <Taxonomy name="Regulations-Keywords" toName="image">
+    <Choice value="Cannabinoids" />
+    <Choice value="sexually suggestive" />
+    <Choice value="alcohol" />
+    <Choice value="gambling/sweepstakes" />
+    <Choice value="cosmetic interventions" />
+    <Choice value="hazardous goods" />
+    <Choice value="drug use" />
+    <Choice value="graphic violence" />
+    <Choice value="intense language" />
+    <Choice value="Weight-reduction regimes or establishments" />
+    <Choice value="E-Cigarettes" />
+    <Choice value="Prescription-only medicines" />
+  </Taxonomy>
+
+  <Choices name="Inappropriate or Offensive Content" toName="image">
+    <Choice value="Inappropriate or Offensive Content (Keywords: offensive language, violent acts, hate speech, sexually explicit, hookup dating, graphic images, racially insensitive, conspiracy theories, disrespectful religious/sacred content/profanity, Cannabinoids, trafficking, social issues)"/>
+  </Choices>
+  <Taxonomy name="Inappropriate-Keywords" toName="image">
+    <Choice value="offensive language" />
+    <Choice value="violent acts" />
+    <Choice value="hate speech" />
+    <Choice value="sexually explicit" />
+    <Choice value="hookup dating" />
+    <Choice value="graphic images" />
+    <Choice value="racially insensitive" />
+    <Choice value="conspiracy theories" />
+    <Choice value="disrespectful religious/sacred content/profanity" />
+    <Choice value="Cannabinoids" />
+    <Choice value="trafficking" />
+    <Choice value="social issues" />
+  </Taxonomy>
+
+  <Choices name="Deceptive claims and Exaggerated Benefits - Health" toName="image">
+    <Choice value="Deceptive claims and Exaggerated Benefits - Health (Keywords: No disclosure, miracle cure, weight loss, scientifically proven, Dietary supplements, cosmetic beauty treatments, mental health services, false vaccine information)"/>
+  </Choices>
+  <Taxonomy name="Deceptive-Keywords - Health" toName="image">
+    <Choice value="No disclosure" />
+    <Choice value="miracle cure" />
+    <Choice value="weight loss" />
+    <Choice value="scientifically proven" />
+    <Choice value="dietary supplements" />
+    <Choice value="cosmetic beauty treatments" />
+    <Choice value="mental health services" />
+    <Choice value="false vaccine information" />
+  </Taxonomy>
+
+  <Choices name="Deceptive claims and Exaggerated Benefits - Financial" toName="image">
+    <Choice value="Deceptive claims and Exaggerated Benefits - Financial (Keywords: get rich quick, financial freedom, investment returns, guaranteed profits, False Tax Promises, Crypto Gain Misrepresentation, debt relief)"/>
+  </Choices>
+  <Taxonomy name="Deceptive-Keywords - Financial" toName="image">
+    <Choice value="get rich quick" />
+    <Choice value="financial freedom" />
+    <Choice value="investment returns" />
+    <Choice value="guaranteed profits" />
+    <Choice value="False Tax Promises" />
+    <Choice value="Crypto Gain Misrepresentation" />
+    <Choice value="debt relief" />
+  </Taxonomy>
+
+  <Choices name="Deceptive claims and Exaggerated Benefits - Environmental" toName="image">
+    <Choice value="Deceptive claims and Exaggerated Benefits - Environmental (Keywords: No disclosure, greenwashing (eco-friendly, sustainable, green product, carbon-neutral, environmentally safe), eco-friendly, ethical sourcing, organic, waste reduction claims)"/>
+  </Choices>
+  <Taxonomy name="Deceptive-Keywords - Environmental" toName="image">
+    <Choice value="No disclosure" />
+    <Choice value="greenwashing" />
+    <Choice value="sustainable" />
+    <Choice value="green product" />
+    <Choice value="carbon-neutral" />
+    <Choice value="eco-friendly" />
+    <Choice value="ethical sourcing" />
+    <Choice value="environmentally safe" />
+    <Choice value="organic" />
+    <Choice value="waste reduction claims" />
+  </Taxonomy>
+
+  <Choices name="Deceptive claims and Exaggerated Benefits - Other Impossible claims" toName="image">
+    <Choice value="Deceptive claims and Exaggerated Benefits - Other Impossible claims (Keywords: overpromising, instant results, transform your life, best in the world/market, one-of-a-kind, never-before-seen, guaranteed satisfaction, exclusive deal, legal claims
+)"/>
+  </Choices>
+  <Taxonomy name="Deceptive-Keywords - Other Impossible claims" toName="image">
+    <Choice value="overpromising" />
+    <Choice value="instant results" />
+    <Choice value="transform your life" />
+    <Choice value="best in the world/market" />
+    <Choice value="one-of-a-kind" />
+    <Choice value="never-before-seen" />
+    <Choice value="guaranteed satisfaction" />
+    <Choice value="exclusive deal" />
+    <Choice value="legal claims" />
+  </Taxonomy>
+
+  <Choices name="Dark patterns and manipulative design" toName="image">
+    <Choice value="Dark patterns and manipulative design (Keywords: clickbait, social engineering, scarcity tactics, confirmshaming, countdown timers, fake buttons, sensationalism, fake testimonials, fake celebrity endorsements, urgency, last chance, your data is at risk, fear tactics, emergency, danger, don’t miss out)"/>
+  </Choices>
+  <Taxonomy name="DarkPatterns-Keywords" toName="image">
+    <Choice value="clickbait" />
+    <Choice value="social engineering" />
+    <Choice value="scarcity tactics" />
+    <Choice value="confirmshaming" />
+    <Choice value="countdown timers" />
+    <Choice value="fake buttons" />
+    <Choice value="sensationalism" />
+    <Choice value="fake testimonials" />
+    <Choice value="fake celebrity endorsements" />
+    <Choice value="urgency" />
+    <Choice value="last chance" />
+    <Choice value="your data is at risk" />
+    <Choice value="emergency" />
+    <Choice value="fear tactics" />
+    <Choice value="danger" />
+    <Choice value="don’t miss out" />
+  </Taxonomy>
+
+  <Choices name="User Experience Disruption" toName="image">
+    <Choice value="User Experience Disruption (Keywords: annoying, intrusive, auto-playing video, difficult-to-close pop-ups, disruptive ad formats, ad loading speed, unclear labeling of sponsored content. Ad quality (image), No Information (text/image) - for context"/>
+  </Choices>
+  <Taxonomy name="UserExperience-Keywords" toName="image">
+    <Choice value="annoying" />
+    <Choice value="intrusive" />
+    <Choice value="auto-playing video" />
+    <Choice value="difficult-to-close pop-ups" />
+    <Choice value="disruptive ad formats" />
+    <Choice value="ad loading speed" />
+    <Choice value="unclear labeling of sponsored content" />
+    <Choice value="ad quality (image)" />
+    <Choice value="No Information (text/image) - for context" />
+  </Taxonomy>
+
+  <Choices name="Fraud and Scam Content" toName="image">
+    <Choice value="Fraud and Scam Content (Keywords: subscription fraud, fake certificates, counterfeit currency, fake review manipulation, scam behavior, crypto scams, brand impersonation, unauthorized use, copyright violation, stolen images)"/>
+  </Choices>
+  <Taxonomy name="Fraud-Keywords" toName="image">
+    <Choice value="subscription fraud" />
+    <Choice value="fake certificates" />
+    <Choice value="counterfeit currency" />
+    <Choice value="fake review manipulation" />
+    <Choice value="scam behavior" />
+    <Choice value="crypto scams" />
+    <Choice value="brand impersonation" />
+    <Choice value="unauthorized use" />
+    <Choice value="copyright violation" />
+    <Choice value="stolen images" />
+  </Taxonomy>
+
+  <Choices name="Political and Socially Sensitive Topics" toName="image">
+    <Choice value="Political and Socially Sensitive Topics (Keywords: No disclosure, election campaigns, endorsements, fake news, propaganda (climate change, LGBTQ rights, racial justice, religious freedom, abortion, immigration policy), defaming candidates)"/>
+  </Choices>
+  <Taxonomy name="Political-Keywords" toName="image">
+    <Choice value="no disclosure" />
+    <Choice value="election campaigns" />
+    <Choice value="fake endorsements" />
+    <Choice value="fake news" />
+    <Choice value="propaganda" />
+    <Choice value="climate change" />
+    <Choice value="LGBTQ rights" />
+    <Choice value="racial justice" />
+    <Choice value="religious freedom" />
+    <Choice value="abortion" />
+    <Choice value="immigration policy" />
+    <Choice value="defaming candidates" />
+  </Taxonomy>
+
+  <Choices name="None of the above/Other" toName="image">
+    <Choice value="None of the above/Other" />
+  </Choices>
+
+  <!-- Label for the TextArea -->
+  <Header value="Remarks (if you selected 'Other'/'None of the above')" />
+  <!-- TextArea for entering details if 'Other - Specify' is selected -->
+  <TextArea name="Remarks" toName="image" 
+            editable="true" 
+            placeholder="Please specify details if you selected 'Other'"/>
+</View>
