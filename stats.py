@@ -30,6 +30,34 @@ def find_z(x1, n1, x2, n2, scene):
     print(f"P-Value (One-Tailed): {p_value_one_tail}") 
     print("Significant?" if p_value_one_tail < 0.05 else "Not Significant")
 
+def find_z_two_tailed(x1, n1, x2, n2, scene):
+    # Compute proportions for each group
+    p1 = x1 / n1 
+    p2 = x2 / n2 
+    
+    # Calculate the pooled proportion
+    p = (x1 + x2) / (n1 + n2) 
+    
+    # Standard error of the difference in proportions
+    se = np.sqrt(p * (1 - p) * (1/n1 + 1/n2)) 
+    
+    # Z-statistic for the difference in proportions
+    z_stat = (p1 - p2) / se 
+    
+    # Two-tailed p-value: double the one-tailed p-value based on the absolute value of z
+    p_value_two_tail = 2 * stats.norm.sf(abs(z_stat))
+    
+    # Output the results
+    print("Two-Tailed Z-Test", scene) 
+    print("Proportion 1:", p1, "Proportion 2:", p2)
+    print(f"Z-Statistic: {z_stat}") 
+    print(f"P-Value (Two-Tailed): {p_value_two_tail}") 
+    print("Significant?" if p_value_two_tail < 0.05 else "Not Significant")
+
+# Example usage:
+# find_z_two_tailed(54, 150, 66, 140, "Example Scene")
+
+
 def fisher(control_occurrence, n1, adblock_occurrence, n2):
     # Example Data: Replace with your observed counts
     # control_occurrence = 10  # Number of times the label occurs in the control group

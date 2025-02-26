@@ -2,12 +2,13 @@ import pandas as pd
 
 # Load the CSV file
 # Load the TSV file using the given path
-file_path = 'ground_truth.csv'
-file_path_nolinks = 'ground_truth_nolinks.csv'
+# file_path = 'ground_truth.csv'
+# file_path_nolinks = 'ground_truth_nolinks.csv'
 
-dataframes = [pd.read_csv(file_path), pd.read_csv(file_path_nolinks)]
+# dataframes = [pd.read_csv(file_path), pd.read_csv(file_path_nolinks)]
 
-data = pd.concat(dataframes, ignore_index=True)
+# data = pd.concat(dataframes, ignore_index=True)
+data = pd.read_csv('merged_ground_truth.csv')  # Prevent empty strings from being treated as NaN
 
 # Replace NaN values in 'Ground Truth' column with empty strings
 data['Ground Truth'] = data['Ground Truth'].fillna('')

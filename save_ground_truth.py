@@ -9,14 +9,14 @@ pd.set_option('display.max_colwidth', None) # This is the key line for showing f
 
 # Load the TSV file using the given path
 # file_path = '/home/ritik/Downloads/Merged_Annotations_nolinks.tsv'
-file_path = '/home/ritik/Downloads/Merged_Annotations.tsv'
-file_path_nolinks = '/home/ritik/Downloads/Merged_Annotations_nolinks.tsv'
+file_path = '/home/ritik/Downloads/Merged_Annotations - Anno_3.tsv'
+file_path_nolinks = '/home/ritik/Downloads/Merged_Annotations_nolinks - Anno_3.tsv'
 
-dataframes = [pd.read_csv(file_path, sep='\t', keep_default_na=False), pd.read_csv(file_path, sep='\t', keep_default_na=False)]
+dataframes = [pd.read_csv(file_path, sep='\t', keep_default_na=False), pd.read_csv(file_path_nolinks, sep='\t', keep_default_na=False)]
 # dataframes = [pd.read_csv(file_path, sep='\t', keep_default_na=False), pd.read_csv(file_path_nolinks, sep='\t', keep_default_na=False)]
 
-# df = pd.concat(dataframes, ignore_index=True)
-df = pd.read_csv(file_path, sep='\t', keep_default_na=False)  # Prevent empty strings from being treated as NaN
+df = pd.concat(dataframes, ignore_index=True)
+# df = pd.read_csv(file_path, sep='\t', keep_default_na=False)  # Prevent empty strings from being treated as NaN
 # print(df)
 
 replacements = {'1_Germany': 'control_germany',
@@ -149,5 +149,5 @@ def save_with_ground_truth(df_preprocessed, annotation_columns, output_file_path
 df_preprocessed = df[annotation_columns].applymap(preprocess_cell_annotations)
 # print(df_preprocessed["JSON Filename"])
 
-save_with_ground_truth(df_preprocessed, annotation_columns, 'ground_truth.csv')
+save_with_ground_truth(df_preprocessed, annotation_columns, 'merged_ground_truth.csv')
 

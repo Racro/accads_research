@@ -84,6 +84,7 @@ def sizes(fpath_input, fpath_output): # detect ads and find size; json.load()["d
 
             ad_pkts = []
             for pkt in all_pkts:
+                print(website, pkt[0])
                 ret = check_if_ad(website, pkt[0])
                 # print(pkt, ret)
                 if ret:

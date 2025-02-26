@@ -9,8 +9,8 @@ pd.set_option('display.max_colwidth', None) # This is the key line for showing f
 
 # Load the TSV file using the given path
 # file_path = '/home/ritik/Downloads/Merged_Annotations_nolinks.tsv'
-file_path = '/home/ritik/Downloads/Merged_Annotations.tsv'
-file_path_nolinks = '/home/ritik/Downloads/Merged_Annotations_nolinks.tsv'
+file_path = '/home/ritik/Downloads/Merged_Annotations - Anno_3.tsv'
+file_path_nolinks = '/home/ritik/Downloads/Merged_Annotations_nolinks - Anno_3.tsv'
 
 dataframes = [pd.read_csv(file_path, sep='\t', keep_default_na=False), pd.read_csv(file_path_nolinks, sep='\t', keep_default_na=False)]
 
