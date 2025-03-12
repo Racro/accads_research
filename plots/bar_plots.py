@@ -12,14 +12,14 @@ data = data.rename(columns={'Unnamed: 0': 'Condition'})
 data['Condition'] = data['Condition'].str.strip("{}").str.replace("'", "")
 
 legend_replacements = {
-    'control_germany': 'Control_Germany',
-    'control_US': 'Control_US',
-    'control_under_18': 'Control_under_18',
-    'control_over_18': 'Control_over_18',
-    'adblock_germany': 'Accads_Germany',
-    'adblock_US': 'Accads_US',
-    'adblock_under_18': 'Accads_under_18',
-    'adblock_over_18': 'Accads_over_18'
+    'control_germany': 'Control-Germany',
+    'control_US': 'Control-US',
+    'control_under_18': 'Control-under-18',
+    'control_over_18': 'Control-over-18',
+    'adblock_germany': 'AccAds-Germany',
+    'adblock_US': 'AccAds-US',
+    'adblock_under_18': 'AccAds-under-18',
+    'adblock_over_18': 'AccAds-over-18'
 }
 
 # Function to replace keywords in legend labels
@@ -42,9 +42,9 @@ adblock_data = adblock_data[columns_to_keep]
 
 # Abbreviation mapping for x-axis labels
 abbreviations = {
-    'Dark Patterns and Manipulative Design': 'DPMD',
+    'Dark patterns and manipulative design': 'DPMD',
     'Political and Socially Sensitive Topics': 'PST',
-    'Deceptive Claims and Exaggerated Benefits': 'DCB',
+    'Deceptive claims and Exaggerated Benefits': 'DCB',
     'Regulations': 'REG',
     'Inappropriate or Offensive Content': 'IOC',
     'User Experience Disruption': 'UED',

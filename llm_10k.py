@@ -27,16 +27,7 @@ explanations = json.load(open('llm_annotation_explanations_10k.json', 'r'))
 annot_keys = []
 for i in all_annot.keys():
     annot_keys.append('/'.join(i.split('/')[-2:]))
-# interesting_files = [
-#     # 'www.21usdeal.com_192a_7_adshot_3.png',
-#     'www.allears.net_9d72_5_adshot_1.png',
-#     # 'www.biblegateway.com_67f2_4_adshot_0.png',
-#     # 'www.dailynous.com_8f33_4_adshot_1.png',
-#     # 'www.globalnews.ca_c026_7_adshot_3.png',
-#     # 'www.jansatta.com_6ff2_8_adshot_4.png',
-#     # 'www.legacy-wow.com_c1db_4_adshot_0.png',
-#     # 'www.motherjones.com_433a_7_adshot_3.png'
-# ]
+
 errors = []
 
 for folder in folders:

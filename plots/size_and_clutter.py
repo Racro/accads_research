@@ -128,7 +128,7 @@ def clutter():
     plt.plot(x, group1_line_data, marker='o', linestyle='-', color='blue', label='Control')
 
     # Plot Group 2 line
-    plt.plot(x, group2_line_data, marker='o', linestyle='-', color='red', label='Accads')
+    plt.plot(x, group2_line_data, marker='o', linestyle='-', color='red', label='AccAds')
 
     # Customize the plot
     plt.xticks(ticks=x, labels=categories, fontsize=10)
@@ -258,7 +258,7 @@ json_files = [
 ]
 
 # Categories for the x-axis
-categories = ['US', 'Germany', 'Over_18', 'Under_18']
+categories = ['US', 'Germany', 'Over-18', 'Under-18']
 
 # Call the function
 boxplot_grouped_with_means(json_files, categories)

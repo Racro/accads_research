@@ -1054,9 +1054,17 @@ def extract_urls(file_path, condition):
     if condition == 'reqs':
         if not os.path.exists(file_path):
             return []
-        reqs = []
+        reqs_post_fetch = []
+        reqs_post_XHR = []
+        reqs_all_XHR = []
+        reqs_all_fetch = []
+        reqs_fetch_XHR = []
+        req_all_post = []
         reqs_all = []
         if_exchange = []
+        
+        # reqs_all = []
+        # if_exchange = []
         try:
             with open(file_path) as f:
                 data = json.load(f)["data"]["requests"]
@@ -1068,11 +1076,22 @@ def extract_urls(file_path, condition):
 
                     if 'googlesyndication' in ii['url']:
                         continue
-                    if ii["type"] == "Fetch" and ii["method"] == "POST":# and ii['responseBodyHash'] != None:
-                        if 'responseBodyHash' in ii.keys() and ii['responseBodyHash'] == None:
-                            continue
-                        reqs.append(tld)
-                
+                    if 'responseBodyHash' in ii.keys() and ii['responseBodyHash'] == None:
+                        continue
+                    if 'method' in ii.keys() and ii["method"] == "POST":
+                        if ii["type"] == "Fetch":# and ii['responseBodyHash'] != None:
+                            reqs_post_fetch.append(tld)
+                        if ii["type"] == "XHR":
+                            reqs_post_XHR.append(tld)
+                        req_all_post.append(tld)
+
+                    if ii['type'] == 'Fetch':
+                        reqs_all_fetch.append(tld)
+                    if ii['type'] == 'XHR':
+                        reqs_all_XHR.append(tld)
+
+                    # reqs_fetch_XHR = reqs_all_fetch.extend(reqs_all_XHR)
+
                     reqs_all.append(tld)
                     
                     if belongs_to_known_exchange(ii['url']):
@@ -1082,32 +1101,52 @@ def extract_urls(file_path, condition):
             print(e)
             print(file_path)
             sys.exit(0)
-        return reqs, reqs_all, if_exchange
+        # return reqs_post_fetch, reqs_all, if_exchange
+        # return [set(reqs_post_fetch), set(reqs_post_XHR), set(reqs_all_XHR), set(reqs_all_fetch), set(reqs_fetch_XHR)]
+        return reqs_post_fetch, reqs_post_XHR, req_all_post, reqs_all_XHR, reqs_all_fetch, reqs_all, if_exchange
 
     # Ads
     if condition == 'ads':
         if not os.path.exists(file_path):
-            return [], [], []
+            # return [], [], []
+            return []
         with open(file_path) as f:
             data = json.load(f)
-            imgs = []
-            links = []
-            frameurl = []
+            # bg_imgs = []
+            # imgs = []
+            # links = []
+            # frameurl = []
+            big_ret = []
         try:
             num_ads = data['data']['ads']['scrapeResults']['nAdsScraped']
             data = data['data']['ads']['adAttrs']
         except Exception as e:
-            return [], [], []
+            # return [], [], []
+            # print(111)
+            return []
+        
         
         for ii in range(num_ads):  
+            bg_imgs = []
+            imgs = []
+            links = []
+            frameurl = []
+            ss = data[ii]['screenshot']
             for jj in range(len(data[ii]['adLinksAndImages'])):
                 try:
                     if data[ii]['adLinksAndImages'][jj]['containsImgsOrLinks'] == True:
                         # imgs
                         for el in data[ii]['adLinksAndImages'][jj]['imgs']:
-                            if el['width'] == 0 and el['height'] == 0:
-                                continue
+                            # if el['width'] == 0 and el['height'] == 0:
+                            #     continue
                             imgs.append(extract_tld(el['src']))
+
+                        # bg_imgs
+                        for el in data[ii]['adLinksAndImages'][jj]['bgImgs']:
+                            # if el['width'] == 0 and el['height'] == 0:
+                            #     continue
+                            bg_imgs.append(extract_tld(el['src']))
+
                         # links
                         for el in data[ii]['adLinksAndImages'][jj]['links']:
                             for el2 in el:
@@ -1119,8 +1158,10 @@ def extract_urls(file_path, condition):
                     sys.exit() 
                 except Exception as e: 
                     print(e)
-                    continue    
-        return imgs, links, frameurl
+                    continue
+            big_ret.append([set(imgs), set(bg_imgs), set(links), set(frameurl), ss])    
+        # return imgs, bg_imgs, links, frameurl, ss
+        return big_ret
 
 
 def analyse_ads_dict(src):

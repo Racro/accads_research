@@ -80,8 +80,8 @@ def fisher(control_occurrence, n1, adblock_occurrence, n2):
     print("Significant?" if p_value < 0.05 else "Not Significant")
 
 
-n1 = 150 # 150
-n2 = 150 # 150
+n1 = 151 # 150
+n2 = 151 # 150
 # ctrl = [0,0] # [34, 36]
 # adb = [13,16] # [54, 50]
 adb = [68, 66, 61, 57]
@@ -93,9 +93,10 @@ ctrl = [21, 54, 36, 50]
 # ctrl = [34, 54, 36, 50]
 # adb = [52, 66, 61, 57]
 scenario = ['under_18', 'over_18', 'US', 'germany']
-for i in range(len(ctrl)):
-    find_z(ctrl[i], n1, adb[i], n2, scenario[i])
-    # fisher(ctrl[i], n1, adb[i], n2)
-    print('-'*50)
+# for i in range(len(ctrl)):
+#     find_z(ctrl[i], n1, adb[i], n2, scenario[i])
+#     # fisher(ctrl[i], n1, adb[i], n2)
+#     print('-'*50)
 
-find_z(ctrl[0], n1, ctrl[1], n2, 'adblock_18')
+# find_z(ctrl[0], n1, ctrl[1], n2, 'adblock_18')
+find_z(51, 151, 59, 151, 'adblock_18')

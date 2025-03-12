@@ -17,9 +17,9 @@ lst_ctrl_old = [f for f in os.listdir(f'{data_path}/data_US/control') if f.endsw
 full_list = list(set(lst_adb_new) & set(lst_adb_old) & set(lst_ctrl_new) & set(lst_ctrl_old))
 
 def get_exchange_info(fp):
-    reqs, reqs_all, if_exchange = extract_urls(fp, 'reqs')
+    reqs, a, b, c, d, reqs_all, if_exchange = extract_urls(fp, 'reqs')
     imgs, links, frameurl = extract_urls(fp, 'ads')
-    return [set(reqs), set(reqs_all), set(if_exchange), set(imgs), set(links), set(frameurl)]
+    return [set(reqs), set(a), set(b), set(c), set(d),set(reqs_all), set(if_exchange), set(imgs), set(links), set(frameurl)]
     # url_dict = {}    
     # for url in reqs:
     #     if url not in url_dict:
@@ -85,11 +85,14 @@ for filename in full_list:
                                 all_ads += 1
                         exchange_info_adblock = get_exchange_info(f'{data_path}/{folder}/{case}/{filename}')
 
-                        exchanges_dict[folder][case][website] = [len(exchange_info_adblock[0] - exchange_info_control[0]), len(exchange_info_adblock[1] - exchange_info_control[1]), len(exchange_info_adblock[2] - exchange_info_control[2]), len(exchange_info_adblock[3] - exchange_info_control[3]), len(exchange_info_adblock[4] - exchange_info_control[4]), len(exchange_info_adblock[5] - exchange_info_control[5]), list(exchange_info_adblock[0] - exchange_info_control[0]), list(exchange_info_adblock[1] - exchange_info_control[1]), list(exchange_info_adblock[2] - exchange_info_control[2]), list(exchange_info_adblock[3] - exchange_info_control[3]), list(exchange_info_adblock[4] - exchange_info_control[4]), list(exchange_info_adblock[5] - exchange_info_control[5])]
-                        data[website][folder] = [len(exchange_info_adblock[0] - exchange_info_control[0]), len(exchange_info_adblock[1] - exchange_info_control[1]), len(exchange_info_adblock[2] - exchange_info_control[2]), len(exchange_info_adblock[3] - exchange_info_control[3]), len(exchange_info_adblock[4] - exchange_info_control[4]), len(exchange_info_adblock[5] - exchange_info_control[5]), np.around(prob/all_ads, 2)]
-        json.dump(prob_dict, open('mediation_analysis_prob_dict.json', 'w'))
-        json.dump(data, open('mediation_analysis_data.json', 'w'))
-        json.dump(exchanges_dict, open('mediation_analysis_exchanges_dict.json', 'w'))
+                        if all_ads == 0:
+                            continue
+                        exchanges_dict[folder][case][website] = [len(exchange_info_adblock[0] - exchange_info_control[0]), len(exchange_info_adblock[1] - exchange_info_control[1]), len(exchange_info_adblock[2] - exchange_info_control[2]), len(exchange_info_adblock[3] - exchange_info_control[3]), len(exchange_info_adblock[4] - exchange_info_control[4]), len(exchange_info_adblock[5] - exchange_info_control[5]), list(exchange_info_adblock[0] - exchange_info_control[0]), list(exchange_info_adblock[1] - exchange_info_control[1]), list(exchange_info_adblock[2] - exchange_info_control[2]), list(exchange_info_adblock[3] - exchange_info_control[3]), list(exchange_info_adblock[4] - exchange_info_control[4]), list(exchange_info_adblock[5] - exchange_info_control[5]), list(exchange_info_adblock[6] - exchange_info_control[6]), list(exchange_info_adblock[7] - exchange_info_control[7]), list(exchange_info_adblock[8] - exchange_info_control[8]), list(exchange_info_adblock[9] - exchange_info_control[9])]
+
+                        data[website][folder] = [len(exchange_info_adblock[0] - exchange_info_control[0]), len(exchange_info_adblock[1] - exchange_info_control[1]), len(exchange_info_adblock[2] - exchange_info_control[2]), len(exchange_info_adblock[3] - exchange_info_control[3]), len(exchange_info_adblock[4] - exchange_info_control[4]), len(exchange_info_adblock[5] - exchange_info_control[5]), len(exchange_info_adblock[6] - exchange_info_control[6]), len(exchange_info_adblock[7] - exchange_info_control[7]), len(exchange_info_adblock[8] - exchange_info_control[8]), len(exchange_info_adblock[9] - exchange_info_control[9]), np.around(prob/all_ads, 2), prob, all_ads]
+        json.dump(prob_dict, open('mediation_analysis_prob_dict_new.json', 'w'))
+        json.dump(data, open('mediation_analysis_data_new.json', 'w'))
+        json.dump(exchanges_dict, open('mediation_analysis_exchanges_dict_new.json', 'w'))
         print('*'*50)
     except Exception as e:
         print(e)

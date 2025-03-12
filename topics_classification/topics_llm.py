@@ -37,22 +37,59 @@ def get_ad_info_from_url(url):
                 {
                     "role": "user",
                     "content": 
-                        f"Identify the IAB categories for the url: {url}"
+                        f"""Classify the given JavaScript into one of the seven categories based on following data:
+                        ##
+                        SOURCE URL - {src_name}
+                        ##
+                        SOURCE CODE - {src}
+                        """
                 },
                 {
                     "role": "system",
-                    "content":
+                    "content": 
                         """
-                        You are an expert in analysing website URLs and identifying which IAB category it belongs to. Your task is to determine the specific IAB category that the website belongs to based on prior knowledge on the website content. Please stick to the specific categories as included in the IAB taxonomy. There are mostly 1 category but there could be multiple too.
-                        If you cannot find any category, take some time back and slowly rethink to come up with the category. If still not, try to guess the closest category.
-                        ###
-                        For example:
-                        www.novelfull.com - ['/Books & Literature']
-                        www.boursorama.com - ['/News/Business News', '/Finance/Investing', '/Finance/Banking']
-                        www.wired2fish.com - ['/Hobbies & Leisure/Outdoors/Fishing']
-                        ###
-                        Please be conservative in your approach and only return results if you are sure without hallucinations. Return an empty list otherwise. 
-                        Output format: [Category1, Category2, etc]"
+                        You are an expert at analyzing JavaScript files based on both their public source URL and the provided source code. In case source URL is not present or clear, resort to source code based analysis. Your task is to classify each JavaScript instance into one of the predefined categories. If none of the categories fit, classify it under "Others," which covers topics outside the first six categories.
+
+                        The seven categories are:  
+                        1. User Interface (UI) & DOM Interaction  
+                        2. Data Processing & Business Logic  
+                        3. API & Network Communication  
+                        4. Asynchronous Programming & Task Management  
+                        5. State Management & Storage  
+                        6. Error Handling, Security & Optimization  
+                        7. Others  
+
+                        Take a thoughtful approach when determining the correct category. If you're unsure, take a moment to reconsider and identify the closest match. Only return results when you are certain, and avoid speculative guesses.
+
+                        ### Examples:
+                            - SOURCE URL - https://example.com/ui-handler.js, SOURCE - '// Toggles the visibility of a modal on button click
+                            document.getElementById('open-modal').addEventListener('click', function () {
+                                const modal = document.getElementById('modal');
+                                if (modal.style.display === 'none') {
+                                    modal.style.display = 'block';
+                                } else {
+                                    modal.style.display = 'none';
+                                }
+                            });' - User Interface (UI) & DOM Interaction
+                            - SOURCE URL - https://api.example.com/fetch-data.js, SOURCE - '// Fetches data from a remote API and logs the response
+                            async function fetchData() {
+                                try {
+                                    const response = await fetch('https://api.example.com/data');
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    const data = await response.json();
+                                    console.log(data);
+                                } catch (error) {
+                                    console.error('Error fetching data:', error);
+                                }
+                            }
+
+                            fetchData();' - API & Network Communication
+
+                        ### Output format:  
+                        `Category`
+
                         """
                 },
             ],
